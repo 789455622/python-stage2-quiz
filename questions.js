@@ -1,9 +1,10 @@
-// Python阶段性测试 - 题库（来自docx文档替换）
-// 单选10 + 填空7 + 判断5 + 简答1 = 23题
-// 满分：82分（按文档标注的分值）
+// Python阶段性测试 - 完整题库（来自docx文档）
+// 第一套：单选10 + 填空7 + 判断5 + 简答1 = 23题
+// 第二套：单选10 + 多选6 + 程序理解8 + 简答6 + 编程3 = 33题
+// 合计：56题
 
 const questionBank = [
-  // ========== 一、单选题（10题，每题3分，共30分） ==========
+  // ==================== 第一套（23题） ====================
   {
     id: 1, type: "single", category: "单选题",
     question: "下面代码的输出结果是( )。\n\nx = 12.34\nprint(type(x))",
@@ -221,7 +222,7 @@ const questionBank = [
     explanation: "lambda 匿名函数常作为参数传递给 map()、filter()、sorted() 等函数。"
   },
 
-  // ========== 四、简答题（1题，5.4分） ==========
+  // ========== 第一套·四、简答题（1题，5.4分） ==========
   {
     id: 23, type: "essay", category: "简答题",
     question: "设计一个Circle类表示圆，这个类字段是圆的半径，一个求周长的实例方法，一个求面积的实例方法。输入一个1-100之间的数值，使用定义的圆的类创建一个圆，并调用实例方法分别计算出周长和面积，并正确输出。要求圆周率π从标准库math中导入pi。",
@@ -234,6 +235,320 @@ const questionBank = [
       "定义求面积方法 area()：π*r²",
       "创建对象并调用方法输出结果"
     ]
+  },
+
+  // ==================== 第二套（33题） ====================
+  // ========== 第二套·一、单选题（10题，每题3分） ==========
+  {
+    id: 24, type: "single", category: "单选题",
+    question: "下列哪种方式能产生元组？",
+    options: [
+      { key: "A", text: "tuple1 = (0)" },
+      { key: "B", text: "tuple1 = (0,)" },
+      { key: "C", text: "tuple1 = (x for x in range(10))" },
+      { key: "D", text: "tuple1 = [0]" }
+    ],
+    answer: "B", score: 3,
+    explanation: "单元素元组必须在元素后加逗号，`(0,)` 才是元组，`(0)` 只是整数0。"
+  },
+  {
+    id: 25, type: "single", category: "单选题",
+    question: "在长字符串中，如何不显示换行符？",
+    options: [
+      { key: "A", text: "行尾加/" },
+      { key: "B", text: "行尾加\\" },
+      { key: "C", text: "行尾加\\0" },
+      { key: "D", text: "行尾加\\r" }
+    ],
+    answer: "B", score: 3,
+    explanation: "行尾加反斜杠 `\\` 表示续行，不显示换行符。"
+  },
+  {
+    id: 26, type: "single", category: "单选题",
+    question: "下列哪种数据类型不可以作为字典的键？",
+    options: [
+      { key: "A", text: "列表" },
+      { key: "B", text: "数字" },
+      { key: "C", text: "字符串" },
+      { key: "D", text: "元组" }
+    ],
+    answer: "A", score: 3,
+    explanation: "字典的键必须是不可变类型，列表是可变类型，不能作为键。"
+  },
+  {
+    id: 27, type: "single", category: "单选题",
+    question: "以下哪种字符串拼接方法效率最高？",
+    options: [
+      { key: "A", text: "加号连接" },
+      { key: "B", text: "%连接" },
+      { key: "C", text: "format函数" },
+      { key: "D", text: "join函数" }
+    ],
+    answer: "D", score: 3,
+    explanation: "`join()` 一次性分配内存，避免反复创建新字符串对象，效率最高。"
+  },
+  {
+    id: 28, type: "single", category: "单选题",
+    question: "对于 numpy 数组 arr = np.array([[1,2,3],[4,5,6],[7,8,9]])，执行 arr[1:, 1:] 的结果是？",
+    options: [
+      { key: "A", text: "[[2,3],[5,6],[8,9]]" },
+      { key: "B", text: "[[1,2],[4,5]]" },
+      { key: "C", text: "[[5,6],[8,9]]" },
+      { key: "D", text: "[[4,5,6],[7,8,9]]" }
+    ],
+    answer: "C", score: 3,
+    explanation: "`arr[1:, 1:]` 从第1行到最后、第1列到最后，即 [[5,6],[8,9]]。"
+  },
+  {
+    id: 29, type: "single", category: "单选题",
+    question: "想要删除DataFrame中所有包含缺失值的行，正确的代码是？",
+    options: [
+      { key: "A", text: "df.dropna(axis=1, how='any')" },
+      { key: "B", text: "df.dropna(axis=0, how='all')" },
+      { key: "C", text: "df.dropna(axis=1, how='all')" },
+      { key: "D", text: "df.dropna(axis=0, how='any')" }
+    ],
+    answer: "D", score: 3,
+    explanation: "`axis=0` 操作行，`how='any'` 表示只要有缺失值就删除该行。"
+  },
+  {
+    id: 30, type: "single", category: "单选题",
+    question: "对于二维数组 arr = np.array([[1,2,3],[4,5,6]])，执行 arr.sum(axis=1) 的结果是？",
+    options: [
+      { key: "A", text: "21" },
+      { key: "B", text: "[6, 15]" },
+      { key: "C", text: "[5, 7, 9]" },
+      { key: "D", text: "[3, 7, 11]" }
+    ],
+    answer: "B", score: 3,
+    explanation: "`axis=1` 按行求和：1+2+3=6，4+5+6=15，结果为 [6, 15]。"
+  },
+  {
+    id: 31, type: "single", category: "单选题",
+    question: "使用 matplotlib 绘制图表时出现中文乱码，主要解决方式是？",
+    options: [
+      { key: "A", text: "更换绘图函数" },
+      { key: "B", text: "重启程序" },
+      { key: "C", text: "更换代码编辑器" },
+      { key: "D", text: "提前设置支持中文的字体样式" }
+    ],
+    answer: "D", score: 3,
+    explanation: "需设置 `plt.rcParams['font.sans-serif'] = ['SimHei']` 等中文字体。"
+  },
+  {
+    id: 32, type: "single", category: "单选题",
+    question: "使用 matplotlib 绘图，必须导入的模块是？",
+    options: [
+      { key: "A", text: "import pyplot as mat" },
+      { key: "B", text: "import matplotlib.pyplot as plt" },
+      { key: "C", text: "import plot as plt" },
+      { key: "D", text: "import matplotlib as mpl" }
+    ],
+    answer: "B", score: 3,
+    explanation: "标准导入方式为 `import matplotlib.pyplot as plt`。"
+  },
+  {
+    id: 33, type: "single", category: "单选题",
+    question: "Python中的字典是一种什么类型的数据结构？",
+    options: [
+      { key: "A", text: "列表" },
+      { key: "B", text: "映射" },
+      { key: "C", text: "树" },
+      { key: "D", text: "集合" }
+    ],
+    answer: "B", score: 3,
+    explanation: "字典是一种映射类型，通过键-值对存储数据。"
+  },
+
+  // ========== 第二套·二、多选题（6题，每题3分） ==========
+  {
+    id: 34, type: "multiple", category: "多选题",
+    question: "以下哪些语言属于高级语言？",
+    options: [
+      { key: "A", text: "Python" },
+      { key: "B", text: "机器语言" },
+      { key: "C", text: "汇编语言" },
+      { key: "D", text: "C++" }
+    ],
+    answer: ["A", "D"], score: 3,
+    explanation: "Python 和 C++ 都是高级语言；机器语言和汇编语言属于低级语言。"
+  },
+  {
+    id: 35, type: "multiple", category: "多选题",
+    question: "下列哪些是元组的特点？",
+    options: [
+      { key: "A", text: "无序的" },
+      { key: "B", text: "可变的" },
+      { key: "C", text: "有序的" },
+      { key: "D", text: "不可变的" }
+    ],
+    answer: ["C", "D"], score: 3,
+    explanation: "元组是有序且不可变的序列类型。"
+  },
+  {
+    id: 36, type: "multiple", category: "多选题",
+    question: "Python相比其他程序设计语言具有的特点是？",
+    options: [
+      { key: "A", text: "解释型" },
+      { key: "B", text: "交互式" },
+      { key: "C", text: "面向对象" },
+      { key: "D", text: "服务端语言" }
+    ],
+    answer: ["A", "B", "C"], score: 3,
+    explanation: "Python是解释型、交互式、面向对象语言，但不仅限于服务端。"
+  },
+  {
+    id: 37, type: "multiple", category: "多选题",
+    question: "引发异常的原因包括？",
+    options: [
+      { key: "A", text: "除以零" },
+      { key: "B", text: "下标越界" },
+      { key: "C", text: "不同类型的变量运算" },
+      { key: "D", text: "内存错误" }
+    ],
+    answer: ["A", "B", "C", "D"], score: 3,
+    explanation: "四种情况均会引发异常：ZeroDivisionError、IndexError、TypeError、MemoryError。"
+  },
+  {
+    id: 38, type: "multiple", category: "多选题",
+    question: "下列哪些是 Numpy 数组的核心属性？",
+    options: [
+      { key: "A", text: "size（元素总数）" },
+      { key: "B", text: "index（索引）" },
+      { key: "C", text: "dtype（数据类型）" },
+      { key: "D", text: "shape（数组形状）" }
+    ],
+    answer: ["A", "C", "D"], score: 3,
+    explanation: "Numpy 核心属性包括 size、dtype、shape、ndim 等，index 不是核心属性。"
+  },
+  {
+    id: 39, type: "multiple", category: "多选题",
+    question: "下列哪些是 Pandas 的核心数据结构？",
+    options: [
+      { key: "A", text: "Series（一维带标签数组）" },
+      { key: "B", text: "Panel（三维数据）" },
+      { key: "C", text: "Array（数组）" },
+      { key: "D", text: "DataFrame（二维表格数据）" }
+    ],
+    answer: ["A", "D"], score: 3,
+    explanation: "Pandas 两大核心结构：Series 和 DataFrame。Panel 已废弃。"
+  },
+
+  // ========== 第二套·三、程序理解题（8题） ==========
+  {
+    id: 40, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出 a、b、c 的值：\n\na,b,c = 'B','A','C'\nif(a>b):\n    a=b\n    b=c\n    c=a\nprint(a,b,c)",
+    answer: "A C A", score: 3,
+    explanation: "'B'>'A'为True，执行a=b='A', b=c='C', c=a='A'。最终a='A',b='C',c='A'。"
+  },
+  {
+    id: 41, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出输出结果：\n\ndat=['1','2','3','0','0','0']\nfor item in dat:\n    if item=='0':\n        dat.remove(item)\nprint(dat)",
+    answer: "['1', '2', '3', '0']", score: 3,
+    explanation: "遍历时删除元素会跳过下一个，最终剩1个'0'。"
+  },
+  {
+    id: 42, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出输出结果：\n\ndef sum(a,b):\n    sum = a + b\n    return sum\na = 'A'\nb = '99'\nsum(a,b)",
+    answer: "A99", score: 3,
+    explanation: "字符串拼接：'A' + '99' = 'A99'。"
+  },
+  {
+    id: 43, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出执行结果：\n\nx = 10\ndef test():\n    global x\n    x = 20\ntest()\nprint(x)",
+    answer: "20", score: 3,
+    explanation: "`global x` 使函数内修改的是全局变量，打印 20。"
+  },
+  {
+    id: 44, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出控制台输出：\n\ndef count_up_to(n):\n    num = 1\n    while num <= n:\n        yield num\n        num += 1\ngen = count_up_to(3)\nprint(list(gen) + list(gen))",
+    answer: "[1, 2, 3]", score: 3,
+    explanation: "生成器只能迭代一次，第一次 [1,2,3]，第二次为空，拼接后 [1,2,3]。"
+  },
+  {
+    id: 45, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出控制台输出：\n\ndef factorial(n):\n    return 1 if n == 0 else n * factorial(n-1)\nprint(factorial(4))",
+    answer: "24", score: 3,
+    explanation: "递归计算阶乘：4×3×2×1 = 24。"
+  },
+  {
+    id: 46, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出控制台输出：\n\nclass Parent:\n    x = 10\nclass Child(Parent):\n    x = 20\n    def __init__(self):\n        self.x = 30\nc = Child()\nprint(c.x, Child.x)",
+    answer: "30 20", score: 3,
+    explanation: "实例属性 self.x=30 优先，类属性 Child.x=20。"
+  },
+  {
+    id: 47, type: "fill", category: "程序理解题",
+    question: "阅读以下程序，写出控制台输出：\n\ndef func(a, b, c=3):\n    return a*b + c\nt = (2, 3)\nprint(func(*t, c=1))",
+    answer: "7", score: 3.1,
+    explanation: "`*t` 解包为 a=2, b=3，c=1。结果：2×3+1=7。"
+  },
+
+  // ========== 第二套·四、简答题（6题） ==========
+  {
+    id: 48, type: "essay", category: "简答题",
+    question: "列表和字典有什么不同？",
+    referenceAnswer: "列表中的数据是有序排列的，知道元素的索引，就能够查到对应的值。字典中的数据是'键-值'对，没有顺序可言，是通过键来查找与其对应值的。",
+    score: 3.1,
+    keyPoints: ["列表有序，字典无序", "列表通过索引访问，字典通过键访问", "列表用 [] 定义，字典用 {} 定义"]
+  },
+  {
+    id: 49, type: "essay", category: "简答题",
+    question: "Python 变量命名的基本规则有？",
+    referenceAnswer: "只能由字母、数字和下划线组成。不能以数字开头。不能是 Python 的关键字，区分大小写。",
+    score: 3.1,
+    keyPoints: ["只能由字母、数字、下划线组成", "不能以数字开头", "不能是 Python 关键字", "区分大小写"]
+  },
+  {
+    id: 50, type: "essay", category: "简答题",
+    question: "Pandas的基本特点有？",
+    referenceAnswer: "能合并其他出现在常见数据库中的关系运算。能灵活处理缺失数据。既能处理时间序列数据，也能处理非时间序列数据。有按轴自动显式数据对齐的数据结构，防止因许多数据未对齐以及来自不同数据源的数据而导致错误。",
+    score: 3.1,
+    keyPoints: ["支持关系运算", "灵活处理缺失数据", "支持时间序列和非时间序列数据", "自动数据对齐"]
+  },
+  {
+    id: 51, type: "essay", category: "简答题",
+    question: "使用Matplotlib实现数据图形化的优势有哪些？",
+    referenceAnswer: "（1）使用起来极其简单。（2）以渐进、交互式方式实现数据可视化。（3）对图像元素控制力更强。（4）可输出PNG、PDF、SVG和EPS等多种格式。",
+    score: 3.1,
+    keyPoints: ["使用简单", "渐进、交互式数据可视化", "图像元素控制力强", "支持多种输出格式"]
+  },
+  {
+    id: 52, type: "essay", category: "简答题",
+    question: "概括Python的特点。",
+    referenceAnswer: "语法简洁、类库丰富、平台无关、胶水语言、通用编程、强制缩进、模式多样。",
+    score: 3.1,
+    keyPoints: ["语法简洁", "类库丰富", "平台无关", "胶水语言", "通用编程", "强制缩进", "模式多样"]
+  },
+  {
+    id: 53, type: "essay", category: "简答题",
+    question: "简述深拷贝与浅拷贝的区别和影响。",
+    referenceAnswer: "浅拷贝：仅复制对象顶层引用（嵌套对象仍共享）。影响：修改嵌套对象会影响原对象。深拷贝：递归复制所有层级对象（完全独立的新对象）。影响：新旧对象完全隔离，互不影响。",
+    score: 3.1,
+    keyPoints: ["浅拷贝：仅复制顶层引用", "浅拷贝影响：修改嵌套对象会影响原对象", "深拷贝：递归复制所有层级", "深拷贝影响：完全隔离"]
+  },
+
+  // ========== 第二套·五、编程题（3题） ==========
+  {
+    id: 54, type: "essay", category: "编程题",
+    question: "设计三个字典dict_a、dict_b和dict_c，每个字典中存储了一个学生的信息，包括name和id，然后把三个字典存储到一个列表student中，遍历这个列表，将其中每个人所有信息都打印出来。",
+    referenceAnswer: "dict_a = {'name':'Zhang San','id':'95001'}\ndict_b = {'name':'Li Si','id':'95002'}\ndict_c = {'name':'Wang Wu','id':'95003'}\nstudent = []\nstudent.append(dict_a)\nstudent.append(dict_b)\nstudent.append(dict_c)\nfor dict in student:\n    values = list(dict.values())\n    print('姓名是：%s，学号是：%s' % (values[0],values[1]))",
+    score: 3.1,
+    keyPoints: ["定义三个字典（含name和id）", "将字典存入列表", "遍历列表打印所有学生信息"]
+  },
+  {
+    id: 55, type: "essay", category: "编程题",
+    question: "编写一个Python程序，要求用户输入一个整数n，判断它是否为质数。如果是质数，则输出\"是质数\"。如果不是质数，则输出\"不是质数\"。如果输入的n小于等于1，则抛出ValueError异常。",
+    referenceAnswer: "def is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5)+1):\n        if n % i == 0:\n            return False\n    return True\ntry:\n    n = int(input(\"请输入一个正整数n：\"))\n    if n <= 1:\n        raise ValueError(\"输入的n必须大于1！\")\n    else:\n        if is_prime(n):\n            print(\"{}是质数\".format(n))\n        else:\n            print(\"{}不是质数\".format(n))\nexcept ValueError as e:\n    print(e)",
+    score: 3.1,
+    keyPoints: ["定义is_prime函数", "n<=1时返回False或抛异常", "try-except捕获ValueError", "遍历2到sqrt(n)判断整除"]
+  },
+  {
+    id: 56, type: "essay", category: "编程题",
+    question: "编写程序，定义两个函数分别计算两个正整数的最大公约数和最小公倍数，输入两个正整数（需校验合法性判断是否大于0），输出计算结果。",
+    referenceAnswer: "def gcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef lcm(a, b):\n    return a * b // gcd(a, b)\n\nwhile True:\n    num1 = int(input(\"请输入第一个正整数：\"))\n    if num1 > 0:\n        break\n    print(\"请输入大于0的整数！\")\nwhile True:\n    num2 = int(input(\"请输入第二个正整数：\"))\n    if num2 > 0:\n        break\n    print(\"请输入大于0的整数！\")\n\ngcd_result, lcm_result = gcd(num1, num2), lcm(num1, num2)\nprint(f\"{num1}和{num2}的最大公约数：{gcd_result}\")\nprint(f\"{num1}和{num2}的最小公倍数：{lcm_result}\")",
+    score: 3.1,
+    keyPoints: ["定义gcd函数（辗转相除法）", "定义lcm函数（利用gcd）", "输入校验（判断>0）", "正确输出结果"]
   }
 ];
 

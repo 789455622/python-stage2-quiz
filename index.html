@@ -390,7 +390,7 @@
 <div class="header">
   <div class="header-inner">
     <h1><span class="icon">🐍</span>Python 阶段性测试</h1>
-    <div class="header-info">Python阶段性测试 · 23题 · 82分</div>
+    <div class="header-info">Python阶段性测试 · 56题 · 两套完整</div>
   </div>
 </div>
 
@@ -467,25 +467,29 @@ function init() {
 function getFilteredQuestions() {
   if (app.currentCategory === 'all') return questionBank;
   if (app.currentCategory === 'single') return questionBank.filter(q => q.type === 'single' && q.category !== '判断题');
-  if (app.currentCategory === 'judge') return questionBank.filter(q => q.category === '判断题');
+  if (app.currentCategory === 'multiple') return questionBank.filter(q => q.type === 'multiple');
   if (app.currentCategory === 'fill') return questionBank.filter(q => q.type === 'fill');
-  if (app.currentCategory === 'essay') return questionBank.filter(q => q.type === 'essay');
+  if (app.currentCategory === 'judge') return questionBank.filter(q => q.category === '判断题');
+  if (app.currentCategory === 'essay') return questionBank.filter(q => q.type === 'essay' && q.category === '简答题');
+  if (app.currentCategory === 'code') return questionBank.filter(q => q.type === 'essay' && q.category === '编程题');
   return questionBank;
 }
 
 function getCategoryLabel(cat) {
   const map = {
-    'all': '全部(23)',
-    'single': '单选题(10)',
-    'fill': '填空题(7)',
+    'all': '全部(56)',
+    'single': '单选题(20)',
+    'fill': '填空题(15)',
     'judge': '判断题(5)',
-    'essay': '简答题(1)'
+    'multiple': '多选题(6)',
+    'essay': '简答题(7)',
+    'code': '编程题(3)'
   };
   return map[cat] || cat;
 }
 
 function renderCategoryTabs() {
-  const cats = ['all', 'single', 'fill', 'judge', 'essay'];
+  const cats = ['all', 'single', 'fill', 'judge', 'multiple', 'essay', 'code'];
   const container = document.getElementById('categoryTabs');
   container.innerHTML = cats.map(cat =>
     `<button class="category-tab ${app.currentCategory === cat ? 'active' : ''}" onclick="switchCategory('${cat}')">${getCategoryLabel(cat)}</button>`
