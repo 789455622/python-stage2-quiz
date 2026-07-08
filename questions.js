@@ -1,5 +1,5 @@
-// Python阶段性测试 - 题库（已删除编程题）
-// 单选20 + 多选6 + 填空7 + 判断5 + 程序理解8 + 简答7 = 53题
+// Python阶段性测试 - 题库（已删除编程题和简答题）
+// 单选20 + 多选6 + 填空7 + 判断5 + 程序理解8 = 46题
 
 const questionBank = [
   {
@@ -955,107 +955,6 @@ const questionBank = [
     "answer": "7",
     "score": 3.1,
     "explanation": "`*t` 解包为 a=2, b=3，c=1。结果：2×3+1=7。"
-  },
-  {
-    "id": 47,
-    "type": "essay",
-    "category": "简答题",
-    "question": "设计一个Circle类表示圆，这个类字段是圆的半径，一个求周长的实例方法，一个求面积的实例方法。输入一个1-100之间的数值，使用定义的圆的类创建一个圆，并调用实例方法分别计算出周长和面积，并正确输出。要求圆周率π从标准库math中导入pi。",
-    "referenceAnswer": "from math import pi\n\nclass Circle:\n    def __init__(self, r):\n        self.r = r\n    def perimeter(self):\n        return 2 * pi * self.r\n    def area(self):\n        return pi * self.r ** 2\n\nr = int(input())\nc = Circle(r)\nprint(c.perimeter())\nprint(c.area())",
-    "score": 5.4,
-    "keyPoints": [
-      "从 math 导入 pi",
-      "定义 Circle 类，包含半径属性 r",
-      "定义求周长方法 perimeter()：2*π*r",
-      "定义求面积方法 area()：π*r²",
-      "创建对象并调用方法输出结果"
-    ]
-  },
-  {
-    "id": 48,
-    "type": "essay",
-    "category": "简答题",
-    "question": "列表和字典有什么不同？",
-    "referenceAnswer": "列表中的数据是有序排列的，知道元素的索引，就能够查到对应的值。字典中的数据是'键-值'对，没有顺序可言，是通过键来查找与其对应值的。",
-    "score": 3.1,
-    "keyPoints": [
-      "列表有序，字典无序",
-      "列表通过索引访问，字典通过键访问",
-      "列表用 [] 定义，字典用 {} 定义"
-    ]
-  },
-  {
-    "id": 49,
-    "type": "essay",
-    "category": "简答题",
-    "question": "Python 变量命名的基本规则有？",
-    "referenceAnswer": "只能由字母、数字和下划线组成。不能以数字开头。不能是 Python 的关键字，区分大小写。",
-    "score": 3.1,
-    "keyPoints": [
-      "只能由字母、数字、下划线组成",
-      "不能以数字开头",
-      "不能是 Python 关键字",
-      "区分大小写"
-    ]
-  },
-  {
-    "id": 50,
-    "type": "essay",
-    "category": "简答题",
-    "question": "Pandas的基本特点有？",
-    "referenceAnswer": "能合并其他出现在常见数据库中的关系运算。能灵活处理缺失数据。既能处理时间序列数据，也能处理非时间序列数据。有按轴自动显式数据对齐的数据结构，防止因许多数据未对齐以及来自不同数据源的数据而导致错误。",
-    "score": 3.1,
-    "keyPoints": [
-      "支持关系运算",
-      "灵活处理缺失数据",
-      "支持时间序列和非时间序列数据",
-      "自动数据对齐"
-    ]
-  },
-  {
-    "id": 51,
-    "type": "essay",
-    "category": "简答题",
-    "question": "使用Matplotlib实现数据图形化的优势有哪些？",
-    "referenceAnswer": "（1）使用起来极其简单。（2）以渐进、交互式方式实现数据可视化。（3）对图像元素控制力更强。（4）可输出PNG、PDF、SVG和EPS等多种格式。",
-    "score": 3.1,
-    "keyPoints": [
-      "使用简单",
-      "渐进、交互式数据可视化",
-      "图像元素控制力强",
-      "支持多种输出格式"
-    ]
-  },
-  {
-    "id": 52,
-    "type": "essay",
-    "category": "简答题",
-    "question": "概括Python的特点。",
-    "referenceAnswer": "语法简洁、类库丰富、平台无关、胶水语言、通用编程、强制缩进、模式多样。",
-    "score": 3.1,
-    "keyPoints": [
-      "语法简洁",
-      "类库丰富",
-      "平台无关",
-      "胶水语言",
-      "通用编程",
-      "强制缩进",
-      "模式多样"
-    ]
-  },
-  {
-    "id": 53,
-    "type": "essay",
-    "category": "简答题",
-    "question": "简述深拷贝与浅拷贝的区别和影响。",
-    "referenceAnswer": "浅拷贝：仅复制对象顶层引用（嵌套对象仍共享）。影响：修改嵌套对象会影响原对象。深拷贝：递归复制所有层级对象（完全独立的新对象）。影响：新旧对象完全隔离，互不影响。",
-    "score": 3.1,
-    "keyPoints": [
-      "浅拷贝：仅复制顶层引用",
-      "浅拷贝影响：修改嵌套对象会影响原对象",
-      "深拷贝：递归复制所有层级",
-      "深拷贝影响：完全隔离"
-    ]
   }
 ];
 
