@@ -284,6 +284,23 @@
     color: #389e0d;
     margin-bottom: 4px;
   }
+  .ref-answer .ref-code {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 8px 0 0;
+    tab-size: 4;
+  }
+  .ref-answer .ref-code code {
+    font-family: inherit;
+    color: inherit;
+  }
 
   /* Buttons */
   .btn {
@@ -645,9 +662,18 @@ function renderQuestion(q) {
 
   // Reference answer for essay
   if (app.showAnswers && q.type === 'essay' && q.referenceAnswer) {
-    html += `<div class="ref-answer show">
-      <div class="ref-title">📖 参考答案</div>
-      <div>${escapeHtml(q.referenceAnswer).replace(/\n/g, '<br>')}</div>`;
+    const isCode = q.category === '编程题';
+    if (isCode) {
+      // 编程题用代码块显示
+      html += `<div class="ref-answer show">
+        <div class="ref-title">📖 参考代码</div>
+        <pre class="ref-code"><code>${escapeHtml(q.referenceAnswer)}</code></pre>`;
+    } else {
+      // 简答题用普通文本显示
+      html += `<div class="ref-answer show">
+        <div class="ref-title">📖 参考答案</div>
+        <div>${escapeHtml(q.referenceAnswer).replace(/\n/g, '<br>')}</div>`;
+    }
     if (q.keyPoints && q.keyPoints.length > 0) {
       html += `<div style="margin-top:6px;font-size:13px;color:var(--text-secondary);">
         <strong>关键点：</strong>${q.keyPoints.map(escapeHtml).join('；')}
