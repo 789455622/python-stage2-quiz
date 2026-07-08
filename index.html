@@ -467,8 +467,14 @@ const app = {
   scoreResult: null
 };
 
-// Load from localStorage
+// Load from localStorage (带版本号，题目变化时自动清旧缓存)
 try {
+  const STORAGE_VERSION = 'v46_1';
+  const savedVersion = localStorage.getItem('pythonQuiz_version');
+  if (savedVersion !== STORAGE_VERSION) {
+    localStorage.removeItem('pythonQuiz_answers');
+    localStorage.setItem('pythonQuiz_version', STORAGE_VERSION);
+  }
   const saved = JSON.parse(localStorage.getItem('pythonQuiz_answers') || '{}');
   if (saved && typeof saved === 'object') {
     app.userAnswers = saved;
