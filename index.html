@@ -574,7 +574,7 @@ function renderQuestion(q) {
   </div>`;
 
   // Question text
-  html += `<div class="q-title">${q.question.replace(/\n/g, '<br>')}</div>`;
+  html += `<div class="q-title">${escapeHtml(q.question).replace(/\n/g, '<br>')}</div>`;
 
   // Code block (if question contains program code)
   // Already embedded in question text via <br>
@@ -598,7 +598,7 @@ function renderQuestion(q) {
       const disabled = app.showAnswers ? 'disabled' : '';
       html += `<div class="option-item ${optClass} ${disabled}" id="opt-${q.id}-${opt.key}">
         <span class="option-key">${opt.key}</span>
-        <span>${opt.text}</span>
+        <span>${escapeHtml(opt.text)}</span>
       </div>`;
     });
     html += `</div>`;
@@ -630,7 +630,7 @@ function renderQuestion(q) {
       html += `<div style="margin-top:12px;font-size:14px;font-weight:600;color:${r.correct ? 'var(--success)' : 'var(--danger)'}">${icon} ${r.correct ? '回答正确' : '回答错误'} (+${r.score}/${q.score}分)</div>`;
       if (!r.correct) {
         const ansText = Array.isArray(q.answer) ? q.answer.join(', ') : q.answer;
-        html += `<div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">正确答案：${ansText}</div>`;
+        html += `<div style="font-size:13px;color:var(--text-secondary);margin-top:4px;">正确答案：${escapeHtml(ansText)}</div>`;
       }
     }
   }
@@ -639,7 +639,7 @@ function renderQuestion(q) {
   if (app.showAnswers && q.explanation) {
     html += `<div class="explanation-box show">
       <div class="exp-title">💡 解析</div>
-      <div class="exp-content">${q.explanation}</div>
+      <div class="exp-content">${escapeHtml(q.explanation)}</div>
     </div>`;
   }
 
@@ -647,10 +647,10 @@ function renderQuestion(q) {
   if (app.showAnswers && q.type === 'essay' && q.referenceAnswer) {
     html += `<div class="ref-answer show">
       <div class="ref-title">📖 参考答案</div>
-      <div>${q.referenceAnswer}</div>`;
+      <div>${escapeHtml(q.referenceAnswer).replace(/\n/g, '<br>')}</div>`;
     if (q.keyPoints && q.keyPoints.length > 0) {
       html += `<div style="margin-top:6px;font-size:13px;color:var(--text-secondary);">
-        <strong>关键点：</strong>${q.keyPoints.join('；')}
+        <strong>关键点：</strong>${q.keyPoints.map(escapeHtml).join('；')}
       </div>`;
     }
     html += `</div>`;
