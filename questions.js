@@ -1,6 +1,5 @@
-// Python阶段性测试 - 整合版题库
-// 两套合并为一套，按题型分组重新编号
-// 单选20 + 多选6 + 填空7 + 判断5 + 程序理解8 + 简答7 + 编程3 = 56题
+// Python阶段性测试 - 题库（已删除编程题）
+// 单选20 + 多选6 + 填空7 + 判断5 + 程序理解8 + 简答7 = 53题
 
 const questionBank = [
   {
@@ -1056,47 +1055,6 @@ const questionBank = [
       "浅拷贝影响：修改嵌套对象会影响原对象",
       "深拷贝：递归复制所有层级",
       "深拷贝影响：完全隔离"
-    ]
-  },
-  {
-    "id": 54,
-    "type": "essay",
-    "category": "编程题",
-    "question": "设计三个字典dict_a、dict_b和dict_c，每个字典中存储了一个学生的信息，包括name和id，然后把三个字典存储到一个列表student中，遍历这个列表，将其中每个人所有信息都打印出来。",
-    "referenceAnswer": "dict_a = {'name':'Zhang San','id':'95001'}\ndict_b = {'name':'Li Si','id':'95002'}\ndict_c = {'name':'Wang Wu','id':'95003'}\nstudent = []\nstudent.append(dict_a)\nstudent.append(dict_b)\nstudent.append(dict_c)\nfor dict in student:\n    values = list(dict.values())\n    print('姓名是：%s，学号是：%s' % (values[0],values[1]))",
-    "score": 3.1,
-    "keyPoints": [
-      "定义三个字典（含name和id）",
-      "将字典存入列表",
-      "遍历列表打印所有学生信息"
-    ]
-  },
-  {
-    "id": 55,
-    "type": "essay",
-    "category": "编程题",
-    "question": "编写一个Python程序，要求用户输入一个整数n，判断它是否为质数。如果是质数，则输出\"是质数\"。如果不是质数，则输出\"不是质数\"。如果输入的n小于等于1，则抛出ValueError异常。",
-    "referenceAnswer": "def is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5)+1):\n        if n % i == 0:\n            return False\n    return True\ntry:\n    n = int(input(\"请输入一个正整数n：\"))\n    if n <= 1:\n        raise ValueError(\"输入的n必须大于1！\")\n    else:\n        if is_prime(n):\n            print(\"{}是质数\".format(n))\n        else:\n            print(\"{}不是质数\".format(n))\nexcept ValueError as e:\n    print(e)",
-    "score": 3.1,
-    "keyPoints": [
-      "定义is_prime函数",
-      "n<=1时返回False或抛异常",
-      "try-except捕获ValueError",
-      "遍历2到sqrt(n)判断整除"
-    ]
-  },
-  {
-    "id": 56,
-    "type": "essay",
-    "category": "编程题",
-    "question": "编写程序，定义两个函数分别计算两个正整数的最大公约数和最小公倍数，输入两个正整数（需校验合法性判断是否大于0），输出计算结果。",
-    "referenceAnswer": "def gcd(a, b):\n    while b != 0:\n        a, b = b, a % b\n    return a\n\ndef lcm(a, b):\n    return a * b // gcd(a, b)\n\nwhile True:\n    num1 = int(input(\"请输入第一个正整数：\"))\n    if num1 > 0:\n        break\n    print(\"请输入大于0的整数！\")\nwhile True:\n    num2 = int(input(\"请输入第二个正整数：\"))\n    if num2 > 0:\n        break\n    print(\"请输入大于0的整数！\")\n\ngcd_result, lcm_result = gcd(num1, num2), lcm(num1, num2)\nprint(f\"{num1}和{num2}的最大公约数：{gcd_result}\")\nprint(f\"{num1}和{num2}的最小公倍数：{lcm_result}\")",
-    "score": 3.1,
-    "keyPoints": [
-      "定义gcd函数（辗转相除法）",
-      "定义lcm函数（利用gcd）",
-      "输入校验（判断>0）",
-      "正确输出结果"
     ]
   }
 ];
